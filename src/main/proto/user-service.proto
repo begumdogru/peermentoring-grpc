@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.reflectoring.user_service.grpc";
+option java_outer_classname = "UserServiceProto";
+
+// Kullanıcı hizmeti tanımı
+service UserService {
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+}
+
+// Kullanıcı bilgilerini almak için istek mesajı
+message GetUserRequest {
+  int64 user_id = 1;  // Kullanıcının kimliği
+}
+
+// Kullanıcı bilgilerini dönen yanıt mesajı
+message GetUserResponse {
+  int64 user_id = 1;  // Kullanıcının kimliği
+  string name = 2;    // Kullanıcının adı
+  string email = 3;   // Kullanıcının e-posta adresi
+  string role = 4;    // Kullanıcının rolü (mentor veya mentee)
+}
